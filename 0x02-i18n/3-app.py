@@ -1,19 +1,12 @@
 #!/usr/bin/env python3
-"""_summary_
-
-Returns:
-    _type_: _description_
-"""
-
-
+""" doc doc doc """
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-class Config:
-    """_summary_
-    """
-    DEBUG = True
+class Config(object):
+    """doc doc doc"""
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -21,29 +14,20 @@ class Config:
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
 @babel.localeselector
 def get_locale() -> str:
-    """_summary_
-
-    Returns:
-        str: _description_
-    """
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    """doc doc doc"""
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
-@app.route('/')
+@app.route("/")
 def index() -> str:
-    """_summary_
-
-    Returns:
-        str: _description_
-    """
+    """doc doc doc"""
     return render_template("3-index.html")
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port="5000")
